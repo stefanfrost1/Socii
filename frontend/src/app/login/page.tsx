@@ -51,9 +51,13 @@ export default function LoginPage() {
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="bg-white p-8 rounded-lg shadow-sm border w-full max-w-sm text-center">
           <h1 className="text-2xl font-semibold mb-3">Check your email</h1>
-          <p className="text-gray-600 text-sm mb-6">
+          <p className="text-gray-600 text-sm mb-4">
             We sent a sign-in link to <span className="font-medium">{email}</span>.
             Click the link to be signed in automatically.
+          </p>
+          <p className="text-gray-400 text-xs mb-6">
+            No email after a few minutes? Check your spam folder. If you don&apos;t
+            have an account yet, ask your administrator for an invite.
           </p>
           <button
             onClick={() => setSent(false)}
