@@ -2,6 +2,7 @@
 import { useState } from "react";
 
 const BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+const ALLOWED_DOMAIN = process.env.NEXT_PUBLIC_ALLOWED_EMAIL_DOMAIN ?? "";
 
 export default function RegisterPage() {
   const [email, setEmail] = useState("");
@@ -13,6 +14,15 @@ export default function RegisterPage() {
     e.preventDefault();
     setLoading(true);
     setError("");
+
+    if (ALLOWED_DOMAIN) {
+      const domain = email.split("@")[1]?.toLowerCase();
+      if (domain !== ALLOWED_DOMAIN.toLowerCase()) {
+        setError(`Registration is restricted to @${ALLOWED_DOMAIN} email addresses.`);
+        setLoading(false);
+        return;
+      }
+    }
 
     const res = await fetch(`${BASE}/api/v1/auth/register`, {
       method: "POST",
@@ -62,7 +72,7 @@ export default function RegisterPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              placeholder="you@yourcompany.com"
+              placeholder={ALLOWED_DOMAIN ? `you@${ALLOWED_DOMAIN}` : "you@yourcompany.com"}
               className="w-full border rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
