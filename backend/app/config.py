@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     supabase_key: str
     anthropic_api_key: str
     redis_url: str = "redis://redis:6379/0"
+    allowed_email_domain: str = "simplitics.se"
 
     class Config:
         env_file = ".env"
