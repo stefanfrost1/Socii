@@ -90,7 +90,7 @@ This file provides guidance for AI assistants (Claude and others) working in thi
             ├── api.ts               # Typed fetch wrappers for all backend endpoints
             ├── supabase.ts          # Supabase browser client + getToken()
             ├── types.ts             # Shared TypeScript interfaces
-            └── utils.ts             # cn() helper (clsx + tailwind-merge)
+            └── utils.ts             # cn(), timeAgo(), neglectScore/Color/Emoji(), interactionTypeIcon(), sentimentColor()
 ```
 
 ## Technology Stack
