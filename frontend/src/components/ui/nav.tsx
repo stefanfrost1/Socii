@@ -24,7 +24,7 @@ export function Sidebar() {
   const router = useRouter();
 
   async function signOut() {
-    await supabase.auth.signOut();
+    await supabase.auth.signOut({ scope: "global" });
     router.push("/login");
   }
 
